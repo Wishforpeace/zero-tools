@@ -1,9 +1,9 @@
 package response
 
 import (
-    "net/http"
+	"net/http"
 
-    "github.com/zeromicro/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 type Body struct {
@@ -18,6 +18,7 @@ func Response(w http.ResponseWriter, resp interface{}, err error) {
         body.Code = -1
         body.Msg = err.Error()
     } else {
+        body.Code = 200
         body.Msg = "OK"
         body.Data = resp
     }

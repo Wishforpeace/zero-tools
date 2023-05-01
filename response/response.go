@@ -17,7 +17,8 @@ func Response(w http.ResponseWriter, resp interface{}, err error) {
     if err != nil {
         body.Code = -1
         body.Msg = err.Error()
-    } else {
+	body.Data = nil   
+ } else {
         body.Code = 200
         body.Msg = "OK"
         body.Data = resp

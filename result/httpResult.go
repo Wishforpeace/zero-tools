@@ -21,7 +21,7 @@ func HttpResult(r *http.Request, w http.ResponseWriter, resp interface{}, err er
 		httpx.WriteJson(w, http.StatusOK, r)
 	} else {
 		//错误返回
-		errcode := xerr.SERVER_COMMON_ERROR
+		errcode := xerr.InternalServerError
 		errmsg := "服务器开小差啦，稍后再来试一试"
 
 		causeErr := errors.Cause(err)                // err类型
@@ -54,7 +54,7 @@ func AuthHttpResult(r *http.Request, w http.ResponseWriter, resp interface{}, er
 		httpx.WriteJson(w, http.StatusOK, r)
 	} else {
 		//错误返回
-		errcode := xerr.SERVER_COMMON_ERROR
+		errcode := xerr.InternalServerError
 		errmsg := "服务器开小差啦，稍后再来试一试"
 
 		causeErr := errors.Cause(err)                // err类型
@@ -80,6 +80,6 @@ func AuthHttpResult(r *http.Request, w http.ResponseWriter, resp interface{}, er
 
 // http 参数错误返回
 func ParamErrorResult(r *http.Request, w http.ResponseWriter, err error) {
-	errMsg := fmt.Sprintf("%s ,%s", xerr.MapErrMsg(xerr.REUQEST_PARAM_ERROR), err.Error())
-	httpx.WriteJson(w, http.StatusBadRequest, Error(xerr.REUQEST_PARAM_ERROR, errMsg))
+	errMsg := fmt.Sprintf("%s ,%s", xerr.MapErrMsg(xerr.ErrGetParam), err.Error())
+	httpx.WriteJson(w, http.StatusBadRequest, Error(xerr.ErrGetParam, errMsg))
 }

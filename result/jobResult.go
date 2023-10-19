@@ -2,9 +2,7 @@ package result
 
 import (
 	"context"
-
-	"looklook/common/xerr"
-
+	"github.com/Wishforpeace/zero-tools/xerr"
 	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/logx"
 	"google.golang.org/grpc/status"

@@ -2,7 +2,8 @@ package result
 
 import (
 	"context"
-	"github.com/Wishforpeace/zero-tools/xerr"
+
+	xerr "github.com/Wishforpeace/zero-tools/xerr"
 	"github.com/pkg/errors"
 	"github.com/zeromicro/go-zero/core/logx"
 	"google.golang.org/grpc/status"
@@ -17,7 +18,7 @@ func JobResult(ctx context.Context, resp interface{}, err error) {
 		}
 		return
 	} else {
-		errCode := xerr.SERVER_COMMON_ERROR
+		errCode := xerr.InternalServerError
 		errMsg := "服务器开小差啦，稍后再来试一试"
 
 		// 错误返回
